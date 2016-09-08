@@ -1,0 +1,45 @@
+{
+  "source":{
+    "connection":{
+      "jdbc_driver":"class name for the JDBC Driver",
+      "jdbc_path":"path to source database"
+    },
+    "query":{
+      "sql":"path_to_sql_file",
+      "sql_inline":"SQL here. Be careful with special characters and line feed",
+      "table":"Name of the source table",
+      "groups":{
+        "field":"Main grouping field. Is used for MULTIPOINT, LINE, MULTILINE, POLYGON, MULTIPOLYGON",
+        "sub_field":"Sub grouping field. Is used for MULTILINE, MULTIPOLYGON",
+        "inner":"field for the polygon inner contour identification. Is used for POLYGON, MULTIPOLYGON",
+        "outer":"field for the polygon outer contour identification. Is used for POLYGON, MULTIPOLYGON"
+      },
+      "lat_x":"Lat or x coordinate column name",
+      "lon_y":"Lon or y coordinate column name"
+    }
+  },
+  "destination":{
+    "connection":{
+      "jdbc_driver":"class name for the JDBC Driver",
+      "jdbc_path":"path to destination database"
+    },
+    "srid":"SRID",
+    "type":"Type of geometry: POINT, MULTIPOINT, LINE, MULTILINE, POLYGON, MULTIPOLYGON",
+    "destination_table":{
+      "name":"Name of the table",
+      "create_inline":"SQL script of the creating table",
+      "create":"path to SQL script of the creating table",
+      "truncate":"path to SQL Script of the truncating data in the table",
+      "truncate_inline":"SQL Script of the truncating data in the table",
+      "columns":[
+        {
+          "name": "Name of the column",
+          "mapping":"Mapping to the source table column",
+          "type":"field type: number, string, date, geometry",
+          "date_pattern":"Pattern of the date representaion",
+          "is_geometry":true
+        }
+      ]
+    }
+  }
+}

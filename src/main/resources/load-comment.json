@@ -1,0 +1,53 @@
+{
+  "source":{
+    "connection":{
+      "jdbc_driver":"class name for the JDBC Driver",
+      "jdbc_path":"path to source database"
+    },
+    "query":{
+      "sql":"path_to_sql_file. Sql without any order, group by or limit. Must have where clause, at least with 1=1 value",
+      "sql_inline":"SQL here. Be careful with special characters and line feed. Inline is preffered, than file",
+      "limit_clause":"additional clause for the limitting the result query to one row. Needs for getteng the metadata of the request",
+      "table":"Name of the source table",
+      "groups":{
+        "field":"Main grouping field. Is used for MULTIPOINT, LINESTRING, MULTILINESTRIG, POLYGON, MULTIPOLYGON",
+        "field_alias":"Main grouping field alias. Is used for MULTIPOINT, LINESTRING, MULTILINESTRIG, POLYGON, MULTIPOLYGON",
+        "sub_field":"Sub grouping field. Is used for MULTILINESTRIG, MULTIPOLYGON",
+        "sub_field_alias":"Sub grouping field alias. Is used for MULTILINESTRIG, MULTIPOLYGON",
+        "order":"field for ordering data. Is used to get correct consequence of the coords",
+        "order_alias":"field alias for ordering data. Is used to get correct consequence of the coords",
+        "inner":" - NOT SUPPORTED - field for the polygon inner contour identification. Is used for POLYGON, MULTIPOLYGON",
+        "inner_alias":" - NOT SUPPORTED - field alias for the polygon inner contour identification. Is used for POLYGON, MULTIPOLYGON",
+        "outer":" - NOT SUPPORTED - field for the polygon outer contour identification. Is used for POLYGON, MULTIPOLYGON",
+        "outer_alias":" - NOT SUPPORTED - field alias for the polygon outer contour identification. Is used for POLYGON, MULTIPOLYGON"
+      }
+    }
+  },
+  "destination":{
+    "connection":{
+      "jdbc_driver":"class name for the JDBC Driver",
+      "jdbc_path":"path to destination database"
+    },
+    "srid":"SRID",
+    "sequence":"Name of the sequence to be a PK for the table",
+    "lat_x":"Lat or x coordinate column name from source",
+    "lon_y":"Lon or y coordinate column name from source",
+    "type":"Type of geometry: POINT, MULTIPOINT, LINESTRING, MULTILINESTRIG, POLYGON, MULTIPOLYGON",
+    "destination_table":{
+      "name":"Name of the table",
+      "create_inline":"SQL script of the creating table",
+      "create":"path to SQL script of the creating table",
+      "truncate":"path to SQL Script of the truncating data in the table",
+      "truncate_inline":"SQL Script of the truncating data in the table",
+      "columns":[
+        {
+          "name": "Name of the column",
+          "mapping":"Mapping to the source table column",
+          "type":"field type: number, string, date, geometry",
+          "date_pattern":"Pattern of the date representaion",
+          "is_geometry":true
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "source":{
+    "connection":{
+      "jdbc_driver":"org.postgresql.Driver",
+      "jdbc_path":"jdbc:postgresql://localhost:5432/undwood?user=undwood"
+    },
+    "query":{
+      "sql":"",
+      "limit_clause":" limit 1",
+      "table":"public.lic",
+      "groups":{
+        "field":"lic_num",
+        "field_alias":"lic_num",
+        "order":"pt",
+        "order_alias":"pt"
+      }
+    }
+  },
+  "destination":{
+    "connection":{
+      "jdbc_driver":"org.postgresql.Driver",
+      "jdbc_path":"jdbc:postgresql://localhost:5432/kgdb_wellinfo?user=undwood"
+    },
+    "srid":"4326",
+    "type":"POLYGON",
+    "sequence":"public.sq_sq",
+    "lat_x":"xco",
+    "lon_y":"yco",
+    "destination_table":{
+      "name":"POLY_LIC",
+      "create":"",
+      "truncate_inline":"TRUNCATE TABLE POLY_LIC",
+      "columns":[
+        {
+          "name": "ID",
+          "value": "nextval('public.sq_sq')",
+          "is_geometry": false
+        },
+        {
+          "name": "NEDR",
+          "mapping":"NEDR",
+          "type":"String",
+          "is_geometry":false
+        },
+        {
+          "name": "LIC_NAME",
+          "mapping": "LIC_NAME",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "ACTIVITY",
+          "mapping": "ACTIVITY",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "REASON",
+          "mapping": "REASON",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "ISSUE_DATE",
+          "mapping": "ISSUE_DATE",
+          "type": "Date",
+          "is_geometry": false
+
+        },
+        {
+          "name": "END_DATE",
+          "mapping": "END_DATE",
+          "type": "Date",
+          "is_geometry": false
+
+        },
+        {
+          "name": "SQU",
+          "mapping": "SQU",
+          "type": "Double",
+          "is_geometry": false
+
+        },
+
+        {
+          "name": "STATUS",
+          "mapping": "STATUS",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "LIC_SER",
+          "mapping": "LIC_SER",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "LIC_NUM",
+          "mapping": "LIC_NUM",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "LIK_KIND",
+          "mapping":"LIK_KIND",
+          "type":"String",
+          "is_geometry":false
+        },
+        {
+          "name": "geo_point",
+          "type":"geometry",
+          "is_geometry":true
+        }
+      ]
+    }
+  }
+}

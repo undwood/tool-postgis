@@ -1,0 +1,56 @@
+{
+  "source":{
+    "connection":{
+      "jdbc_driver":"org.postgresql.Driver",
+      "jdbc_path":"jdbc:postgresql://localhost:5432/undwood?user=undwood"
+    },
+    "query":{
+      "sql":"/Users/undwood/Work/Luk-ing/DEV/tool-postgis/src/main/resources/load-sql/query.sql",
+      "limit_clause":" limit 1",
+      "table":"seis_part sp",
+      "groups":{
+        "field":"sp.full_name",
+        "field_alias":"seis_name",
+        "sub_field":"sp.profile_name",
+        "sub_field_alias":"profile_name",
+        "order":"sp.picket",
+        "order_alias":"picket"
+      }
+    }
+  },
+  "destination":{
+    "connection":{
+      "jdbc_driver":"org.postgresql.Driver",
+      "jdbc_path":"jdbc:postgresql://localhost:5432/kgdb_wellinfo?user=undwood"
+    },
+    "srid":"4326",
+    "type":"MULTILINESTRING",
+    "sequence":"public.sq_sq",
+    "lat_x":"lat",
+    "lon_y":"lon",
+    "destination_table":{
+      "name":"s_prof_gm",
+      "create":"/Users/undwood/Work/Luk-ing/DEV/tool-postgis/src/main/resources/load-sql/create.sql",
+      "truncate_inline":"TRUNCATE TABLE s_prof_gm",
+      "columns":[
+        {
+          "name": "seis_name",
+          "mapping":"seis_name",
+          "type":"String",
+          "is_geometry":false
+        },
+        {
+          "name": "profile_name",
+          "mapping":"profile_name",
+          "type":"String",
+          "is_geometry":false
+        },
+        {
+          "name": "geo_line",
+          "type":"geometry",
+          "is_geometry":true
+        }
+      ]
+    }
+  }
+}

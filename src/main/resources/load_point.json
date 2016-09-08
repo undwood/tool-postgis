@@ -1,0 +1,95 @@
+{
+  "source":{
+    "connection":{
+      "jdbc_driver":"org.postgresql.Driver",
+      "jdbc_path":"jdbc:postgresql://localhost:5432/undwood?user=undwood"
+    },
+    "query":{
+      "sql":"/Users/undwood/Work/Luk-ing/DEV/tool-postgis/src/main/resources/load-sql/query_point.sql",
+      "limit_clause":" limit 1",
+      "table":"public.well"
+    }
+  },
+  "destination":{
+    "connection":{
+      "jdbc_driver":"org.postgresql.Driver",
+      "jdbc_path":"jdbc:postgresql://localhost:5432/kgdb_wellinfo?user=undwood"
+    },
+    "srid":"4326",
+    "type":"POINT",
+    "sequence":"public.sq_sq",
+    "lat_x":"xco",
+    "lon_y":"yco",
+    "destination_table":{
+      "name":"p_well",
+      "create":"/Users/undwood/Work/Luk-ing/DEV/tool-postgis/src/main/resources/load-sql/create_point.sql",
+      "truncate_inline":"TRUNCATE TABLE p_well",
+      "columns":[
+        {
+          "name": "id",
+          "value": "nextval('public.sq_sq')",
+          "is_geometry": false
+        },
+        {
+          "name": "NEDR_G",
+          "mapping":"NEDR",
+          "type":"String",
+          "is_geometry":false
+        },
+        {
+          "name": "arear_g",
+          "mapping": "arear",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "field_g",
+          "mapping": "field",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "district_g",
+          "mapping": "district",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "uwi_g",
+          "mapping": "uwi",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "wellname_g",
+          "mapping": "wellname",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "license_g",
+          "mapping": "license",
+          "type": "String",
+          "is_geometry": false
+
+        },
+        {
+          "name": "lic_code_g",
+          "mapping":"lic_code",
+          "type":"String",
+          "is_geometry":false
+        },
+        {
+          "name": "geo_point",
+          "type":"geometry",
+          "is_geometry":true
+        }
+      ]
+    }
+  }
+}

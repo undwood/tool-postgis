@@ -1,0 +1,1 @@
+CREATE TABLE public.s_prof_gm_line (id integer DEFAULT nextval('#SEQ#') CONSTRAINT s_prof_line_pk PRIMARY KEY, seis_name text, profile_name text)
